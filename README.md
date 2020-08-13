@@ -11,7 +11,7 @@ Can be used for example in a docker-compose context in the following way:
 
 ```
 tideways:
-  image: jouwweb/tideways-daemon:VERSION
+  image: jouwweb/tideways-daemon:v1.6.16
 ```
 
 And can than configure a client to send data by configuring the client with:
