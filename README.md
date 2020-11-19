@@ -22,6 +22,14 @@ tideways.connection = tcp://tideways:9135
 
 ## Build a new image?
 
-1. Build new image.
-2. `docker image tag 0c4790456ad8 jouwweb/tideways-daemon:[version]`
-3. `docker image push jouwweb/tideways-daemon:[version]`
+1. Make a new build:
+
+   `docker build .`
+   
+2. Tag the generated image with a new version. An example of an image is `0c4790456ad8`, and an example of a version is `v1.2.8`. The version we use is the version of the daemon itself:
+
+   `docker image tag [image] jouwweb/tideways-daemon:[version]`
+   
+3. Now we push the newly generated image:
+
+   `docker image push jouwweb/tideways-daemon:[version]`
