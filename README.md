@@ -22,14 +22,18 @@ tideways.connection = tcp://tideways:9135
 
 ## Build a new image?
 
-1. Make a new build:
+1. Make a new build. This will report a container sha like `0c4790456ad8`. Remember this hash.
 
    `docker build .`
+
+2. Find out what Tideways version your build is on using the following. For example `v1.6.24`:
+
+   `docker run [image] tideways-daemon`
    
-2. Tag the generated image with a new version. An example of an image is `0c4790456ad8`, and an example of a version is `v1.2.8`. The version we use is the version of the daemon itself:
+3. Tag the generated image with a new version. Using the image and version found in the steps above here:
 
    `docker image tag [image] jouwweb/tideways-daemon:[version]`
    
-3. Now we push the newly generated image:
+4. Now we push the newly generated image:
 
    `docker image push jouwweb/tideways-daemon:[version]`
