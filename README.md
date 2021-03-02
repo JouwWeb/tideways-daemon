@@ -11,7 +11,7 @@ Can be used for example in a docker-compose context in the following way:
 
 ```
 tideways:
-  image: jouwweb/tideways-daemon:v1.6.24
+  image: jouwweb/tideways-daemon:v1.6.32
 ```
 
 And can than configure a client to send data by configuring the client with:
@@ -20,20 +20,30 @@ And can than configure a client to send data by configuring the client with:
 tideways.connection = tcp://tideways:9135
 ```
 
-## Build a new image?
+## Publishing a new version
 
-1. Make a new build. This will report a container sha like `0c4790456ad8`. Remember this hash.
+Follow these steps to publish a new version of the Tideways daemon image to our Docker repository.
 
-   `docker build .`
+1. Rebuild the image with `--no-cache` to make sure that the latest Tideways version is installed.
 
-2. Find out what Tideways version your build is on using the following. For example `v1.6.24`:
+   ```sh
+   docker build --tag jouwweb/tideways-daemon --no-cache .`
+   ```
 
-   `docker run [image] tideways-daemon`
+2. Get the Tideways version from the new image:
+
+   ```sh
+   TIDEWAYS_VERSION=$(docker run jouwweb/tideways-daemon -version)`
+   ```
    
-3. Tag the generated image with a new version. Using the image and version found in the steps above here:
+3. Tag the generated image with the new version:
 
-   `docker image tag [image] jouwweb/tideways-daemon:[version]`
+   ```sh
+   docker image tag jouwweb/tideways-daemon jouwweb/tideways-daemon:${TIDEWAYS_VERSION}`
+   ```
    
 4. Now we push the newly generated image:
 
-   `docker image push jouwweb/tideways-daemon:[version]`
+   ```sh
+   docker image push jouwweb/tideways-daemon:${TIDEWAYS_VERSION}`
+   ```
