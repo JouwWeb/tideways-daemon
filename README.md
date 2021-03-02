@@ -24,7 +24,7 @@ tideways.connection = tcp://tideways:9135
 
 Follow these steps to publish a new version of the Tideways daemon image to our Docker repository.
 
-1. Rebuild the image with `--no-cache` to make sure that the latest Tideways version is installed.
+1. Rebuild the image with `--no-cache` to make sure that the latest Tideways version is installed:
 
    ```sh
    docker build --tag jouwweb/tideways-daemon --no-cache .
