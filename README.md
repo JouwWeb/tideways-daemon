@@ -27,23 +27,23 @@ Follow these steps to publish a new version of the Tideways daemon image to our 
 1. Rebuild the image with `--no-cache` to make sure that the latest Tideways version is installed.
 
    ```sh
-   docker build --tag jouwweb/tideways-daemon --no-cache .`
+   docker build --tag jouwweb/tideways-daemon --no-cache .
    ```
 
 2. Get the Tideways version from the new image:
 
    ```sh
-   TIDEWAYS_VERSION=$(docker run jouwweb/tideways-daemon -version)`
+   TIDEWAYS_VERSION=$(docker run jouwweb/tideways-daemon -version)
    ```
    
 3. Tag the generated image with the new version:
 
    ```sh
-   docker image tag jouwweb/tideways-daemon jouwweb/tideways-daemon:${TIDEWAYS_VERSION}`
+   docker image tag jouwweb/tideways-daemon jouwweb/tideways-daemon:${TIDEWAYS_VERSION}
    ```
    
 4. Now we push the newly generated image:
 
    ```sh
-   docker image push jouwweb/tideways-daemon:${TIDEWAYS_VERSION}`
+   docker image push jouwweb/tideways-daemon:${TIDEWAYS_VERSION}
    ```
